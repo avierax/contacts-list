@@ -1,0 +1,6 @@
+[submodule "contacts"]
+	path = contacts
+	url = git@github.com:oscartoledo/contacts.git
+[submodule "contacts-view"]
+	path = contacts-view
+	url = git@github.com:oscartoledo/contacts-view.git
