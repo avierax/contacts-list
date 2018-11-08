@@ -14,8 +14,8 @@ services:
 
   contacts-backend:
     build:
-      dockerfile: contacts/Dockerfile
-      context: .
+      dockerfile: Dockerfile
+      context: ./contacts
     image: contacts-list-backend:0.0.1
     ports:
       - "8080:8080"
@@ -26,8 +26,8 @@ services:
 
   contacts-frontend:
     build:
-      dockerfile: contacts-view/Dockerfile
-      context: .
+      dockerfile: Dockerfile
+      context: ./contacts-view
     image: contacts-list-frontend:0.0.1
     ports:
       - "8081:80"
