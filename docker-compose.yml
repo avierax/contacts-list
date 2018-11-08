@@ -1,0 +1,41 @@
+version: "3.6"
+
+services:
+  database:
+    image: "postgres:9.5.13"
+    environment:
+      - POSTGRES_USER=contacts
+      - POSTGRES_PASSWORD=c0n14c5
+      - POSTGRES_DB=contacts
+    networks:
+      - contacts-network
+    volumes:
+      - contacts-volume:/var/lib/postgresql/data
+
+  contacts-backend:
+    build:
+      dockerfile: contacts/Dockerfile
+      context: .
+    image: contacts-list-backend:0.0.1
+    ports:
+      - "8080:8080"
+    links:
+      - database
+    networks:
+      - contacts-network
+
+  contacts-frontend:
+    build:
+      dockerfile: contacts-view/Dockerfile
+      context: .
+    image: contacts-list-frontend:0.0.1
+    ports:
+      - "8081:80"
+    networks:
+      - contacts-network
+
+networks:
+  ? contacts-network
+
+volumes:
+  ? contacts-volume
